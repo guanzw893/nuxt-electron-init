@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: './'
   },
+  css: ['@/assets/css/main.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -20,7 +21,7 @@ export default defineNuxtConfig({
     'nuxt-electron'
   ],
   piniaPersistedstate: {
-    storage: 'sessionStorage'
+    storage: 'localStorage'
   },
   electron: {
     build: [
@@ -28,10 +29,7 @@ export default defineNuxtConfig({
         entry: 'electron/main.ts'
       },
       {
-        entry: 'electron/preload.ts',
-        onstart(options: { reload: () => void }) {
-          options.reload()
-        }
+        entry: 'electron/preload.ts'
       }
     ],
     renderer: {}
